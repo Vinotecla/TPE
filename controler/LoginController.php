@@ -23,25 +23,15 @@ class LoginController{
     
     function verifyLogin(){
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
+            //Obtengo usuario y contraseña por post
             $email = $_POST['email'];
-            // $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
-            // --.....PRUEBA SIN ENCRIPTAR------
-
-            $password = $_POST['password']; 
-     
-            // --.....PRUEBA SIN ENCRIPTAR------
+            $password =$_POST['password'];
 
             // Obtengo el usuario de la base de datos
             $user = $this->model->getUser($email);
      
             // Si el usuario existe y las contraseñas coinciden
-            // if ($user && password_verify($password, $user->password)) {
-
-                // --.....PRUEBA SIN ENCRIPTAR------
-
-                if ($user && $password == $user->password) { 
-                    // --.....PRUEBA SIN ENCRIPTAR------
+            if ($user && password_verify($password, $user->password)) {
 
                 session_start();
                 $_SESSION["email"] = $email;
