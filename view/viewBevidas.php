@@ -15,4 +15,9 @@ class classView {
         $this->smarty->assign('bevidas', $bevidas);
         $this->smarty->display('templates\bevidas.tpl');
     }
+    function showInvited($bevidas){
+
+        $this->smarty->assign('bevidas', $bevidas);
+        $this->smarty->display('templates\bebidasInvited.tpl');
+    }
 }

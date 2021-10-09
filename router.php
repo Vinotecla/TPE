@@ -20,6 +20,9 @@ if (!empty($_GET['action'])) {
 $param = explode('/', $action);
 
 switch ($param[0]) {
+    case 'invitado':
+        echo $controler ->Invited();
+        break;
     case 'logout':
         echo $loginController ->logout();
         break;
