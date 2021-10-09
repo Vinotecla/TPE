@@ -38,7 +38,7 @@ class LoginController{
                 
                 $this->view->showHome();
             } else {
-                $this->view->showLogin("Acceso denegado".$email.$password);
+                $this->view->showLogin("Acceso denegado");
             }
         }
     }
