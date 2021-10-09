@@ -30,6 +30,10 @@ class taskControler{
         $DbThings = $this->modelV->TaskGetAll();
         $this->view->ShowBevidas($DbThings);
     }
+    function Invited(){
+        $DbThings = $this->modelV->TaskGetAll();
+        $this->view->showInvited($DbThings);
+    }
     
     function AddVino(){
         $this->authHelper->checkLoggedin();
