@@ -58,7 +58,7 @@ class taskControler{
         
     }
     function categoryFilter($category){
-        $DvCategory = $this->modelCateg->GetCate($category);
+        $DvCategory = $this->modelCateg->GetCategory($category);
         $this->view->showCategory($DvCategory);
     }
     function itemFilter($id){
