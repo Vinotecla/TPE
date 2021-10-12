@@ -14,9 +14,9 @@ class taskVinos{
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function TaskAdd($a, $b, $c, $d){
-        $sentencia = $this->db->prepare("INSERT INTO vinos(id_tipo,nombre,contenido,precio) VALUES(?,?,?,?)");
-        $sentencia->execute(array($a,$b,$c,$d));
+    function TaskAdd($a, $b, $c, $d, $e){
+        $sentencia = $this->db->prepare("INSERT INTO vinos(id_tipo,nombre,contenido,precio,descripcion) VALUES(?,?,?,?,?)");
+        $sentencia->execute(array($a,$b,$c,$d,$e));
     }
 
     function TaskDelete($id){
@@ -29,6 +29,12 @@ class taskVinos{
         $sentencia->execute(array($tipo));
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
+    function GetItem($item){
+        $sentencia = $this->db->prepare("SELECT * FROM vinos WHERE id_vinos = ?");    
+        $sentencia->execute(array($item));
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+        
 
+    }
 
 }

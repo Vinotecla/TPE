@@ -20,4 +20,13 @@ class classView {
         $this->smarty->assign('bevidas', $bevidas);
         $this->smarty->display('templates\bebidasInvited.tpl');
     }
+    function showCategory($DvCategory){
+        $this->smarty->assign('category', $DvCategory);
+        $this->smarty->display('templates\category.tpl');
+    }
+    function showItem($item){
+        
+        $this->smarty->assign('item', $item);
+        $this->smarty->display('templates\item.tpl');
+    }
 }

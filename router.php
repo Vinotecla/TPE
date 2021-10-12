@@ -20,6 +20,12 @@ if (!empty($_GET['action'])) {
 $param = explode('/', $action);
 
 switch ($param[0]) {
+    case 'item':
+        echo $controler ->itemFilter($param[1]);
+        break;
+    case 'category':
+        echo $controler ->categoryFilter($param[1]);
+        break;
     case 'invitado':
         echo $controler ->Invited();
         break;

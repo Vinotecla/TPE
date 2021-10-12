@@ -30,15 +30,19 @@
                     <th>
                         PRECIO
                     </th>
+                    <th>
+                        DESPCRIPCIÓN
+                    </th>
                 <tr>
             </thead>
             <tbody id="pedido-ingresado">
             {foreach from=$bevidas item=$b}
                 <tr>
-                        <th>{$b->tipo}</th>
-                        <th>{$b->nombre}</th>
+                        <th><a type="button" href='category/{$b->tipo}'>{$b->tipo}</a></th>
+                        <th><a href="item/{$b->id_vinos}">{$b->nombre}</a></th>
                         <th>{$b->contenido}ML</th>
                         <th>${$b->precio}</th>
+                        <th>{$b->descripcion}</th>
                         <th><a type="button" href='delete/{$b->id_vinos}'>BORRAR</a></th>
                     <tr>
             {/foreach}
@@ -65,6 +69,9 @@
             </div>
             <div>
                 <input type="number"  placeholder="Ingrese Precio" name="precio">
+            </div>
+            <div>
+                <input type="text"  placeholder="Ingrese Descripción" name="descripcion">
             </div>
         </div>
         <div class="conteiner">
