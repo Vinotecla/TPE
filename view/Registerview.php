@@ -7,8 +7,9 @@ class RegisterView{
     function __construct(){
         $this->smarty = new Smarty();
     }
+
     function ShowRegister(){
-        $this->smarty->assign('register', 'register');
+        $this->smarty->assign('register', 'Register');
         $this->smarty->display('templates/Register.tpl');
     }
 }

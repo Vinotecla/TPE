@@ -19,19 +19,10 @@ if (!empty($_GET['action'])) {
 
 $param = explode('/', $action);
 
+error_log(print_r($param, TRUE));
+error_log("param value ".$param[0]);
+
 switch ($param[0]) {
-    case 'edit':
-        echo $controler ->EditVino($param[1]);
-        break;
-    case 'itemEdit':
-        echo $controler ->Edit();
-        break;
-    case 'item':
-        echo $controler ->itemFilter($param[1]);
-        break;
-    case 'category':
-        echo $controler ->categoryFilter($param[1]);
-        break;
     case 'invitado':
         echo $controler ->Invited();
         break;
@@ -56,14 +47,24 @@ switch ($param[0]) {
     case 'add':
         echo $controler ->AddVino();
         break;
-    case 'edit':
-        echo $controler ->EditVino($param[1]);
-        break;
     case 'delete':
         echo $controler ->DeleteVino($param[1]);
         break;
     case 'filtro':
         echo $controler ->filtrar(); 
+        break;
+    case 'description':
+        echo $controler -> detailOfType($param[1]);
+        break;
+    case 'change':
+        echo $controler -> changeOne();
+        break;
+    case 'modificar':
+        if ($param[1] == 'change') {
+            echo $controler -> changeOne();
+        } else {
+            echo $controler -> modificar($param[1]);
+        }
         break;
     default:
         break;

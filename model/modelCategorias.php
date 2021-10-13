@@ -7,14 +7,9 @@ class taskCategoria {
     }
 
     function GetCate($tipo){
-        $sentencia = $this->db->prepare( "SELECT * FROM categorias where id_tipo=?");
+        $sentencia = $this->db->prepare( "SELECT * FROM categorias where tipo=?");
         $sentencia->execute(array($tipo));
         return $sentencia->fetch(PDO::FETCH_OBJ);
-    }
-    function GetCategory($id){
-        $sentencia = $this->db->prepare( "SELECT * FROM categorias where id_tipo=?");
-        $sentencia->execute(array($id));
-        return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
 

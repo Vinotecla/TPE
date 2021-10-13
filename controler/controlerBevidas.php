@@ -2,75 +2,84 @@
 require_once'model/modelCategorias.php';
 require_once'model/modelVinos.php';
 require_once'view/viewBevidas.php';
-require_once'view/LoginView.php';
-require_once'controler/LoginController.php';
 require_once'Helpers/AuthHelper.php';
-
 
 class taskControler{
 
+    private $modelCateg;
     private $modelV;
     private $view;
-    private $loginView;
-    private $loginController;
     private $authHelper;
 
     function __construct(){
         $this->modelCateg = new taskCategoria();
         $this->modelV = new taskVinos();
         $this->view = new classView();
-        $this->loginView = new LoginView();
-        $this->loginController = new LoginController();
         $this->authHelper = new AuthHelper();
     }
 
     function ShowHome(){
-        $this->authHelper->checkLoggedin();
-
+        $this->authHelper->forceLoggedin();
         $DbThings = $this->modelV->TaskGetAll();
         $this->view->ShowBevidas($DbThings);
     }
+
     function Invited(){
         $DbThings = $this->modelV->TaskGetAll();
         $this->view->showInvited($DbThings);
     }
     
     function AddVino(){
-        $this->authHelper->checkLoggedin();
+        $this->authHelper->forceLoggedin();
         $DvCatego = $this->modelCateg->GetCate($_POST['tipo']);
-        $this->modelV->TaskAdd($DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio'],$_POST['descripcion']);
+        $this->modelV->TaskAdd($DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio']);
+        header("location:".BASE_URL."home");
+    }
+
+    function modificar($id){
+        $vino = $this->modelV->taskGet($id);
+        $this->view->showModificar($vino);
+    }
+
+    function changeOne(){
+        $DvCatego = $this->modelCateg->GetCate($_POST['tipo']);
+        $this->modelV->TaskChange($_POST['id'],$DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio']);
         header("location:".BASE_URL."home");
     }
 
     function DeleteVino($id){
+        $this->authHelper->forceLoggedin();
         $this->modelV->TaskDelete($id);
         header("location:".BASE_URL."home");
     }
 
     function filtrar(){
-        $this->authHelper->checkLoggedin();
-        if ($_POST['filtros'] == "Todo") {
-            header("location:".BASE_URL."home");
+        if ($this->authHelper->isLogIn()) {
+            if ($_POST['filtros'] == "Todo") {
+                $this->ShowHome();
+            }else{
+                $DbThings = $this->modelV->TaskGetOne($_POST['filtros']);
+                $this->view->ShowBevidas($DbThings);
+            }
         }else {
-            $DbThings = $this->modelV->TaskGetOne($_POST['filtros']);
-            $this->view->ShowBevidas($DbThings);
+            if ($_POST['filtros'] == "Todo") {
+                $this->Invited();
+            }else{
+                $DbThings = $this->modelV->TaskGetOne($_POST['filtros']);
+                $this->view->showInvited($DbThings);
+            }
         }
-        
+        // if ($this->authHelper->isLogIn()) {
+        //         $this->ShowHome(sdsd);           
+        // } else {
+        //         $this->Invited(dsds);
+        // }
     }
-    function categoryFilter($category){
-        $DvCategory = $this->modelCateg->GetCategory($category);
-        $this->view->showCategory($DvCategory);
+
+    function detailOfType($tipo){
+        $DvCatego = $this->modelCateg->GetCate($tipo);
+        $this->view->showDetail($DvCatego);
     }
-    function itemFilter($id_vino){
-        $DvItem = $this->modelV->GetItem($id_vino);
-        $this->view->showItem($DvItem);
-    }
-    function EditVino($id_vino){
-        $item = $this->modelV->GetItem($id_vino);
-        $this->view->showItemEdit($item);
-    }
-    function Edit(){
-       $this->modelV->EditVino($_POST['tipo'], $_POST['nombre'], $_POST['contenido'], $_POST['precio'], $_POST['descripcion']);
-        header("location:".BASE_URL."home");
-    }
+
+    
 }

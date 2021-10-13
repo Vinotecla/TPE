@@ -6,6 +6,16 @@
     </div>
     <div class="contenedorbebidas">
         <table>
+            <form action="filtro" method="post">
+                <select name="filtros">
+                    <option value="Todo">Todo</option>
+                    <option value="Malbec">Malbec</option>
+                    <option value="Blanco">Blanco</option>
+                    <option value="Cabernet">Cabernet</option>
+                    <option value="Rosado">Rosado</option>
+                </select>
+                <button type="submit">Fitrar</button>
+            </form>
             <thead>
                 <tr>
                     <th id="filtro-variedad">
@@ -33,6 +43,7 @@
             {/foreach}
             </tbody >
         </table>
+        <p></p>
     </div>
     <form action="login" method="post">
         <button type="submit">Iniciar Sesión</button>

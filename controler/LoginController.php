@@ -38,9 +38,8 @@ class LoginController{
                 
                 $this->view->showHome();
             } else {
-                $this->view->showLogin("Acceso denegado");
+                $this->view->showLogin("Access denied");
             }
         }
     }
-    
 }

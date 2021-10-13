@@ -5,11 +5,11 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="css/style.css">
+            {* <link rel="stylesheet" href="css/style.css"> *}
             <title>Document</title>
         </head>
         <body>
-            <header>
+            {* <header>
             <img src="images/vinos.jpg">
             <div>
                 <div>
@@ -19,10 +19,14 @@
                     <h1>Vinoteca-Vinotecla</h1>
                 </div>
             </div>
-            </header>  
-            <nav>
-                    <section id="inicio"><a href='register'>Registro</a></section>
-                    <section id="bebidas"><a href='login'>Login</a></section>
-                    <section id="carrito"><a href='home'>Home</a></section>
-                    <section id="invitado"><a href='invitado'>Invitado</a></section>
-            </nav>
+            </header>   *}
+            {* <nav>
+                <div>
+                    <img src="images/menu3.png" alt="img-menu" id="btn-menu">
+                </div>
+                <article  id="menu">
+                    <section id="inicio">inicio</section>
+                    <section id="bebidas">bebidas</section>
+                    <section id="carrito">carrito</section>
+                </article>
+            </nav> *}

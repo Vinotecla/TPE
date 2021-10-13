@@ -30,21 +30,21 @@
                     <th>
                         PRECIO
                     </th>
-                    <th>
-                        DESPCRIPCIÓN
-                    </th>
                 <tr>
             </thead>
             <tbody id="pedido-ingresado">
             {foreach from=$bevidas item=$b}
                 <tr>
-                    <th><a href='category/{$b->id_tipo}'>{$b->tipo}</a></th>
-                    <th><a href="item/{$b->id_vinos}">{$b->nombre}</a></th>
+                    <th><a type="button" href='description/{$b->tipo}'>{$b->tipo}</a></th>
+                    <th>{$b->nombre}</th>
                     <th>{$b->contenido}ML</th>
                     <th>${$b->precio}</th>
-                    <th>{$b->descripcion}</th>
                     <th><a type="button" href='delete/{$b->id_vinos}'>BORRAR</a></th>
-                    <th><a type="button" href='edit/{$b->id_vinos}'>EDITAR</a></th>
+                    <th>
+                    <form action="modificar/{$b->id_vinos}" method="post">
+                    <button type="submit">Modificar</button>
+                    </form>
+                    </th>
                 <tr>
             {/foreach}
             </tbody >
@@ -59,8 +59,6 @@
                         <option value="Cabernet">Cabernet</option>
                         <option value="Rosado">Rosado</option>
                 </select>
-
-                {* <input type="text" placeholder="Ingrese Tipo" name="tipo"> *}
             </div>
             <div>
                 <input type="text" placeholder="Ingrese Nombre" name="nombre">
@@ -70,9 +68,6 @@
             </div>
             <div>
                 <input type="number"  placeholder="Ingrese Precio" name="precio">
-            </div>
-            <div>
-                <input type="text"  placeholder="Ingrese Descripción" name="descripcion">
             </div>
         </div>
         <div class="conteiner">

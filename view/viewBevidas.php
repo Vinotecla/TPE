@@ -15,22 +15,26 @@ class classView {
         $this->smarty->assign('bevidas', $bevidas);
         $this->smarty->display('templates\bevidas.tpl');
     }
-    function showInvited($bevidas){
 
+    function showInvited($bevidas){
         $this->smarty->assign('bevidas', $bevidas);
         $this->smarty->display('templates\bebidasInvited.tpl');
     }
-    function showCategory($DvCategory){
-        $this->smarty->assign('category', $DvCategory);
-        $this->smarty->display('templates\category.tpl');
+
+
+    function showDetail($d){
+        $this->smarty->assign('d', $d);
+        $this->smarty->display('templates\detailOfProdocts.tpl');
     }
-    function showItem($item){
-        
-        $this->smarty->assign('item', $item);
-        $this->smarty->display('templates\item.tpl');
-    }
-    function showItemEdit($item){
-        $this->smarty->assign('item', $item);
-        $this->smarty->display('templates\itemEdit.tpl');
+
+    function showModificar($vino){
+        $this->smarty->assign('vino', $vino);
+        $this->smarty->assign('myOptions', array(
+            "Malbec" => 'Malbec',
+            "Blanco" => 'Blanco',
+            "Cabernet" => 'Cabernet',
+            "Rosado" => 'Rosado'));
+        $this->smarty->assign('mySelect', $vino->tipo);
+        $this->smarty->display('templates\modificandoTable.tpl');
     }
 }
