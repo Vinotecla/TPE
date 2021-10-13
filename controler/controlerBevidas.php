@@ -61,8 +61,16 @@ class taskControler{
         $DvCategory = $this->modelCateg->GetCategory($category);
         $this->view->showCategory($DvCategory);
     }
-    function itemFilter($id){
-        $item = $this->modelV->GetItem($id);
-        $this->view->showItem($item);
+    function itemFilter($id_vino){
+        $DvItem = $this->modelV->GetItem($id_vino);
+        $this->view->showItem($DvItem);
+    }
+    function EditVino($id_vino){
+        $item = $this->modelV->GetItem($id_vino);
+        $this->view->showItemEdit($item);
+    }
+    function Edit(){
+       $this->modelV->EditVino($_POST['tipo'], $_POST['nombre'], $_POST['contenido'], $_POST['precio'], $_POST['descripcion']);
+        header("location:".BASE_URL."home");
     }
 }

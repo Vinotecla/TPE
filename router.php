@@ -20,6 +20,12 @@ if (!empty($_GET['action'])) {
 $param = explode('/', $action);
 
 switch ($param[0]) {
+    case 'edit':
+        echo $controler ->EditVino($param[1]);
+        break;
+    case 'itemEdit':
+        echo $controler ->Edit();
+        break;
     case 'item':
         echo $controler ->itemFilter($param[1]);
         break;
@@ -49,6 +55,9 @@ switch ($param[0]) {
         break;
     case 'add':
         echo $controler ->AddVino();
+        break;
+    case 'edit':
+        echo $controler ->EditVino($param[1]);
         break;
     case 'delete':
         echo $controler ->DeleteVino($param[1]);

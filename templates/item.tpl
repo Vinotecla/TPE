@@ -5,17 +5,38 @@
         <h2>Nuestros vinos</h2>
         <p>Bienvenidos a nuestra tienda. Estamos orgullosos de ofrecerle una amplia selección de las mejores bebidas</p>
     </div>
-    <div class="contenedorbebidas">
-    <div class='conteiner'>
-        {foreach from=$item item=$b}
-            <h3>"{$b->nombre}"</h3>
-        {/foreach}
-    </div>
-    <div class='conteiner'>
-        {foreach from=$item item=$b}
-            <h3>"{$b->descripcion}"</h3>
-        {/foreach}
-    </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        TIPO
+                    </th>
+                    <th>
+                        NOMBRE
+                    </th>
+                    <th>
+                        CONTENIDO
+                    </th>
+                    <th>
+                        PRECIO
+                    </th>
+                    <th>
+                        DESPCRIPCIÓN
+                    </th>
+                <tr>
+            </thead>
+            <tbody>
+                {foreach from=$item item=$b}
+                    <tr>
+                        <th>{$b->tipo}</th>
+                        <th>{$b->nombre}</th>
+                        <th>{$b->contenido}ML</th>
+                        <th>${$b->precio}</th>
+                        <th>{$b->descripcion}</th>
+                    <tr>
+                {/foreach}
+            </tbody >
+        </table>
     </div>
     <div>
     <form action="logout" method="post">

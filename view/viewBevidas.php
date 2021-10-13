@@ -29,4 +29,8 @@ class classView {
         $this->smarty->assign('item', $item);
         $this->smarty->display('templates\item.tpl');
     }
+    function showItemEdit($item){
+        $this->smarty->assign('item', $item);
+        $this->smarty->display('templates\itemEdit.tpl');
+    }
 }
