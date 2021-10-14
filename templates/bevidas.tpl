@@ -4,14 +4,15 @@
         <h2>Nuestros vinos</h2>
         <p>Bienvenidos a nuestra tienda. Estamos orgullosos de ofrecerle una amplia selección de las mejores bebidas</p>
     </div>
+    <form action="filtro" method="post">
+        <select name='filtros'>
+        <option value="Todo">Todo</option>
+        {include file="templates/selectCategorias.tpl"}
+        <button type="submit">Fitrar</button>
+    </form>
     <div class="contenedorbebidas">
         <table>
-            <form action="filtro" method="post">
-            <select name='filtros'>
-            <option value="Todo">Todo</option>
-                {include file="templates/selectCategorias.tpl"}
-                <button type="submit">Fitrar</button>
-            </form>
+            
             <thead>
                 <tr>
                     <th id="filtro-variedad">

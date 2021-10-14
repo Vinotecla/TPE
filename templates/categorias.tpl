@@ -1,4 +1,5 @@
 {include file="templates/header.tpl"}
+<br>
 <div class="contenido">
     <div class="contenedorbebidas">
         <table>
@@ -23,29 +24,31 @@
             {/foreach}
             </tbody>
         </table>
-        <form action='addcat' method='post'>
-            <div class="conteiner">
-                <div>
-                    <input type="text" placeholder="Ingrese Tipo" name="tipo">
-                </div>
-                <div>
-                   <input type="text" placeholder="Ingrese Descripcion" name="descripcion">
-                </div>
-            </div>
-            <button type="submit">Agregar</button>
-        </form>
-        <form action='updatecat' method='post'>
-            <div class="conteiner">
-                <div>
-                    {include file="templates/selectCategorias.tpl"}
-                </div>
-                <div>
-                   <input type="text" placeholder="Ingrese Descripcion" name="descripcion">
-                </div>
-            </div>
-            <button type="submit">Modifiar</button>
-        </form>
+        
     </div>
+    <form action='addcat' method='post'>
+        <div class="conteiner">
+            <div>
+                <input type="text" placeholder="Ingrese Tipo" name="tipo">
+            </div>
+            <div>
+                <input type="text" placeholder="Ingrese Descripcion" name="descripcion">
+            </div>
+        </div>
+        <button type="submit">Agregar</button>
+    </form>
+    <form action='updatecat' method='post'>
+        <div class="conteiner">
+            <div>
+                <select name='tipo'>
+                {include file="templates/selectCategorias.tpl"}
+            </div>
+            <div>
+                <input type="text" placeholder="Ingrese Descripcion" name="descripcion">
+            </div>
+        </div>
+        <button type="submit">Modifiar</button>
+    </form>
     <form action="logout" method="post">
         <button type="submit">logout</button>
     </form>

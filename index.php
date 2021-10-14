@@ -45,6 +45,7 @@
                 <tbody id="pedido-ingresado">
                 </tbody >
             </table>
+            <br>
         </div>
         <form action="add" method="post">
             <div class="conteiner">

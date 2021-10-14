@@ -21,9 +21,9 @@ class taskVinos{
         $sentencia->execute(array($id));    
     }
 
-    function TaskChange($id,$tipo,$nombre,$contenido,$precio,$descripcion){
-        $sentencia = $this->db->prepare("UPDATE vinos SET id_tipo=?,nombre=?,contenido=?,precio=?, descripcion=? WHERE id_vinos=?"); 
-        $sentencia->execute(array($tipo,$nombre,$contenido,$precio,$descripcion,$id));
+    function TaskChange($id,$tipo,$nombre,$contenido,$precio){
+        $sentencia = $this->db->prepare("UPDATE vinos SET id_tipo=?,nombre=?,contenido=?,precio=? WHERE id_vinos=?"); 
+        $sentencia->execute(array($tipo,$nombre,$contenido,$precio,$id));
     }
 
     function TaskGetOne($tipo){
@@ -33,10 +33,11 @@ class taskVinos{
     }
 
     function taskGet($id){
-        $sentencia = $this->db->prepare("SELECT vinos.*, categorias.tipo FROM vinos INNER JOIN categorias on vinos.id_tipo = categorias.id_tipo WHERE id_vinos = ?"); 
+        $sentencia = $this->db->prepare("SELECT * FROM vinos INNER JOIN categorias on vinos.id_tipo = categorias.id_tipo WHERE id_vinos = ?"); 
         $sentencia->execute(array($id));
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
+    
     // function deletedCat($id){
     //     $sentencia = $this->db->prepare("DELETE FROM vinos where id_tipo=?");
     //     $sentencia->execute(array($id));       

@@ -48,7 +48,7 @@ class taskControler{
         $DvCatego = $this->modelCateg->GetCate($_POST['filtros']);
         // $this->modelV->TaskChange($_POST['id'],$DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio']);
         header("location:".BASE_URL."home");
-        $this->modelV->TaskChange($_POST['id'],$DvCatego->id_tipo, $_POST['nombre'], $_POST['contenido'], $_POST['precio'], $_POST['descripcion']);
+        $this->modelV->TaskChange($_POST['id'],$DvCatego->id_tipo, $_POST['nombre'], $_POST['contenido'], $_POST['precio']);
     }
 
     function DeleteVino($id){
@@ -70,6 +70,7 @@ class taskControler{
             if ($_POST['filtros'] == "Todo") {
                 $this->Invited();
             }else{
+                var_dump("horgo");
                 $DbThings = $this->modelV->TaskGetOne($_POST['filtros']);
                 $DvCatego = $this->modelCateg->GetCategorias();
                 $this->view->showInvited($DbThings, $DvCatego);
@@ -85,10 +86,10 @@ class taskControler{
         if ($this->authHelper->isLogIn()) {
             $DvCatego = $this->modelCateg->GetCategorias();
             $this->view->showCategorias($DvCatego);
-            }else{
-                $DvCatego = $this->modelCateg->GetCategorias();
-                $this->view->showCategoriasPublic($DvCatego);
-            }
+        }else{
+            $DvCatego = $this->modelCateg->GetCategorias();
+            $this->view->showCategoriasPublic($DvCatego);
+        }
 
     }
     function detailOfType($tipo){
@@ -108,11 +109,12 @@ class taskControler{
         $DvCatego = $this->modelCateg->GetCategorias();
         $this->view->showCategorias($DvCatego);
     }
+
     function updateCat(){
         $this->modelCateg->UpdCat($_POST['tipo'], $_POST['descripcion']);
-        $DvCatego = $this->modelCateg->GetCategorias();
-        $this->view->showCategorias($DvCatego);
+        header("location:".BASE_URL."home");
     }
+
     function deleteCat($id){
         $this->modelCateg->delCat($id);
         // $this->modelV->deletedCat($id);

@@ -13,7 +13,7 @@ class taskCategoria {
     }
     function GetCategorias(){
         $sentencia = $this->db->prepare( "SELECT * FROM categorias");
-        $sentencia->execute(array());
+        $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
     function addCategory($a,$b){
