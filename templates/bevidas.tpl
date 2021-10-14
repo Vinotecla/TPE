@@ -61,6 +61,9 @@
             <div>
                 <input type="number"  placeholder="Ingrese Precio" name="precio">
             </div>
+            <div>
+                <input type="text"  placeholder="Ingrese Descripcion" name="descripcion">
+            </div>
         </div>
         <div class="conteiner">
             <div>
