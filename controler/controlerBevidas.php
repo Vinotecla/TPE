@@ -112,6 +112,7 @@ class taskControler{
 
     function deleteCat($id){
         $this->authHelper->forceLoggedin();
+        $this->modelV->deletedCat($id);
         $this->modelCateg->delCat($id);
         header("location:".BASE_URL."categorias");
     }
