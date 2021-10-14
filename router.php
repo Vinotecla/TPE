@@ -19,9 +19,6 @@ if (!empty($_GET['action'])) {
 
 $param = explode('/', $action);
 
-error_log(print_r($param, TRUE));
-error_log("param value ".$param[0]);
-
 switch ($param[0]) {
     case 'invitado':
         echo $controler ->Invited();
@@ -71,9 +68,6 @@ switch ($param[0]) {
     case 'addcat':
         echo $controler -> addCat();
         break;
-    // case 'changecat':
-    //     echo $controler -> changeCat();
-    //     break;
     case 'updatecat':
         echo $controler -> updateCat();
         break;

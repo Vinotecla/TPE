@@ -34,19 +34,20 @@ class taskControler{
     function AddVino(){
         $this->authHelper->forceLoggedin();
         $DvCatego = $this->modelCateg->GetCate($_POST['filtros']);
-        $this->modelV->TaskAdd($DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio'], $_POST['descripcion']);
+        $this->modelV->TaskAdd($DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio']);
         header("location:".BASE_URL."home");
     }
 
     function modificar($id){
+        $this->authHelper->forceLoggedin();
         $vino = $this->modelV->taskGet($id);
         $DvCatego = $this->modelCateg->GetCategorias();
         $this->view->showModificar($vino, $DvCatego);
     }
 
     function changeOne(){
+        $this->authHelper->forceLoggedin();
         $DvCatego = $this->modelCateg->GetCate($_POST['filtros']);
-        // $this->modelV->TaskChange($_POST['id'],$DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio']);
         header("location:".BASE_URL."home");
         $this->modelV->TaskChange($_POST['id'],$DvCatego->id_tipo, $_POST['nombre'], $_POST['contenido'], $_POST['precio']);
     }
@@ -76,11 +77,6 @@ class taskControler{
                 $this->view->showInvited($DbThings, $DvCatego);
             }
         }
-        // if ($this->authHelper->isLogIn()) {
-        //         $this->ShowHome(sdsd);           
-        // } else {
-        //         $this->Invited(dsds);
-        // }
     }
     function detailCategorias(){
         if ($this->authHelper->isLogIn()) {
@@ -90,41 +86,33 @@ class taskControler{
             $DvCatego = $this->modelCateg->GetCategorias();
             $this->view->showCategoriasPublic($DvCatego);
         }
-
     }
+
     function detailOfType($tipo){
         $DvCatego = $this->modelCateg->GetCate($tipo);
         $this->view->showDetail($DvCatego);
     }
+
     function itemDetail($item){
         $vino = $this->modelV->taskGet($item);
         $this->view->showItem($vino);
     }
-    // function changeCat(){
-    //     $DvCatego = $this->modelCateg->UpdateCat();
-    //     $this->ShowHome();
-    // }
+
     function addCat(){
+        $this->authHelper->forceLoggedin();
         $this->modelCateg->addCategory($_POST['tipo'], $_POST['descripcion']);
-        $DvCatego = $this->modelCateg->GetCategorias();
-        $this->view->showCategorias($DvCatego);
+        header("location:".BASE_URL."categorias");
     }
 
     function updateCat(){
-<<<<<<< HEAD
+        $this->authHelper->forceLoggedin();
         $this->modelCateg->UpdCat($_POST['tipo'], $_POST['descripcion']);
-        header("location:".BASE_URL."home");
-=======
-        $this->modelCateg->UpdCat($_POST['filtros'], $_POST['descripcion']);
-        $DvCatego = $this->modelCateg->GetCategorias();
-        $this->view->showCategorias($DvCatego);
->>>>>>> 3da448d87bd232591286351f753d33dad19b23a7
+        header("location:".BASE_URL."categorias");
     }
 
     function deleteCat($id){
-        $this->modelV->deletedCat($id);
+        $this->authHelper->forceLoggedin();
         $this->modelCateg->delCat($id);
-        $DvCatego = $this->modelCateg->GetCategorias();
-        $this->view->showCategorias($DvCatego);
+        header("location:".BASE_URL."categorias");
     }
 }

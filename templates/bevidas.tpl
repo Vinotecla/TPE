@@ -38,9 +38,6 @@
                     <th>${$b->precio}</th>
                     <th><a type="button" href='delete/{$b->id_vinos}'>BORRAR</a></th>
                     <th><a type="button" href='modificar/{$b->id_vinos}'>MODIFICAR</a>
-                    {* <form action="modificar/{$b->id_vinos}" method="post">
-                    <button type="submit">Modificar</button>
-                    </form> *}
                     </th>
                 <tr>
             {/foreach}
@@ -61,9 +58,6 @@
             </div>
             <div>
                 <input type="number"  placeholder="Ingrese Precio" name="precio">
-            </div>
-            <div>
-                <input type="text"  placeholder="Ingrese Descripcion" name="descripcion">
             </div>
         </div>
         <div class="conteiner">

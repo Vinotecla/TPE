@@ -35,10 +35,6 @@
                 <tr>
                     <th><a href='description/{$b->tipo}'>{$b->tipo}</a></th>
                     <th><a href='item/{$b->id_vinos}'>{$b->nombre}</a></th>
-<<<<<<< HEAD
-                    <th>{$b->nombre}</th>
-=======
->>>>>>> 3da448d87bd232591286351f753d33dad19b23a7
                     <th>{$b->contenido}ML</th>
                     <th>${$b->precio}</th>
                 <tr>

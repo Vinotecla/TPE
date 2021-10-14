@@ -27,27 +27,11 @@
         
     </div>
     <form action='addcat' method='post'>
-        <div class="conteiner">
-            <div>
-                <input type="text" placeholder="Ingrese Tipo" name="tipo">
-            </div>
-<<<<<<< HEAD
-            <div>
-                <input type="text" placeholder="Ingrese Descripcion" name="descripcion">
-=======
-            <button type="submit">Agregar</button>
-        </form>
-        <form action='updatecat' method='post'>
-            <div class="conteiner">
-                <div>
-                    <select name='filtros'>
-                    {include file="templates/selectCategorias.tpl"}
-                </div>
-                <div>
-                   <input type="text" placeholder="Ingrese Descripcion" name="descripcion">
-                </div>
->>>>>>> 3da448d87bd232591286351f753d33dad19b23a7
-            </div>
+        <div>
+            <input type="text" placeholder="Ingrese Tipo" name="tipo">
+        </div>
+        <div>
+            <input type="text" placeholder="Ingrese Descripcion" name="descripcion">
         </div>
         <button type="submit">Agregar</button>
     </form>
