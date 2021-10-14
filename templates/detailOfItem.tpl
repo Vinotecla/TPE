@@ -1,5 +1,5 @@
 {include file="templates/header.tpl"}
-    <h3>{$d->tipo}</h3>
+    <h3>{$d->nombre}</h3>
     <p>
     {$d->descripcion}
     </p>

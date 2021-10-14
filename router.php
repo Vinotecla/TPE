@@ -59,12 +59,26 @@ switch ($param[0]) {
     case 'change':
         echo $controler -> changeOne();
         break;
+    case 'item':
+        echo $controler -> itemDetail($param[1]);
+        break;
     case 'modificar':
-        if ($param[1] == 'change') {
-            echo $controler -> changeOne();
-        } else {
-            echo $controler -> modificar($param[1]);
-        }
+        echo $controler -> modificar($param[1]);
+        break;
+    case 'categorias':
+        echo $controler -> detailCategorias();
+        break;
+    case 'addcat':
+        echo $controler -> addCat();
+        break;
+    // case 'changecat':
+    //     echo $controler -> changeCat();
+    //     break;
+    case 'updatecat':
+        echo $controler -> updateCat();
+        break;
+    case 'deletecat':
+        echo $controler -> deleteCat($param[1]);
         break;
     default:
         break;

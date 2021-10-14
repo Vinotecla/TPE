@@ -7,13 +7,9 @@
     <div class="contenedorbebidas">
         <table>
             <form action="filtro" method="post">
-                <select name="filtros">
-                    <option value="Todo">Todo</option>
-                    <option value="Malbec">Malbec</option>
-                    <option value="Blanco">Blanco</option>
-                    <option value="Cabernet">Cabernet</option>
-                    <option value="Rosado">Rosado</option>
-                </select>
+            <select name='filtros'>
+            <option value="Todo">Todo</option>
+            {include file="templates/selectCategorias.tpl"}
                 <button type="submit">Fitrar</button>
             </form>
             <thead>

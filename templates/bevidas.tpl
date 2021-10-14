@@ -7,13 +7,9 @@
     <div class="contenedorbebidas">
         <table>
             <form action="filtro" method="post">
-                <select name="filtros">
-                    <option value="Todo">Todo</option>
-                    <option value="Malbec">Malbec</option>
-                    <option value="Blanco">Blanco</option>
-                    <option value="Cabernet">Cabernet</option>
-                    <option value="Rosado">Rosado</option>
-                </select>
+            <select name='filtros'>
+            <option value="Todo">Todo</option>
+                {include file="templates/selectCategorias.tpl"}
                 <button type="submit">Fitrar</button>
             </form>
             <thead>
@@ -35,8 +31,8 @@
             <tbody id="pedido-ingresado">
             {foreach from=$bevidas item=$b}
                 <tr>
-                    <th><a type="button" href='description/{$b->tipo}'>{$b->tipo}</a></th>
-                    <th>{$b->nombre}</th>
+                    <th><a href='description/{$b->tipo}'>{$b->tipo}</a></th>
+                    <th><a href='item/{$b->id_vinos}'>{$b->nombre}</a></th>
                     <th>{$b->contenido}ML</th>
                     <th>${$b->precio}</th>
                     <th><a type="button" href='delete/{$b->id_vinos}'>BORRAR</a></th>
@@ -53,12 +49,8 @@
     <form action="add" method="post">
         <div class="conteiner">
             <div>
-                <select name="tipo">
-                        <option value="Malbec">Malbec</option>
-                        <option value="Blanco">Blanco</option>
-                        <option value="Cabernet">Cabernet</option>
-                        <option value="Rosado">Rosado</option>
-                </select>
+            <select name='filtros'>
+            {include file="templates/selectCategorias.tpl"}
             </div>
             <div>
                 <input type="text" placeholder="Ingrese Nombre" name="nombre">

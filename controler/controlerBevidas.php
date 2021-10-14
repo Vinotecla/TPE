@@ -21,30 +21,34 @@ class taskControler{
     function ShowHome(){
         $this->authHelper->forceLoggedin();
         $DbThings = $this->modelV->TaskGetAll();
-        $this->view->ShowBevidas($DbThings);
+        $DvCatego = $this->modelCateg->GetCategorias();
+        $this->view->ShowBevidas($DbThings, $DvCatego);
     }
 
     function Invited(){
         $DbThings = $this->modelV->TaskGetAll();
-        $this->view->showInvited($DbThings);
+        $DvCatego = $this->modelCateg->GetCategorias();
+        $this->view->showInvited($DbThings, $DvCatego);
     }
     
     function AddVino(){
         $this->authHelper->forceLoggedin();
-        $DvCatego = $this->modelCateg->GetCate($_POST['tipo']);
+        $DvCatego = $this->modelCateg->GetCate($_POST['filtros']);
         $this->modelV->TaskAdd($DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio']);
         header("location:".BASE_URL."home");
     }
 
     function modificar($id){
         $vino = $this->modelV->taskGet($id);
-        $this->view->showModificar($vino);
+        $DvCatego = $this->modelCateg->GetCategorias();
+        $this->view->showModificar($vino, $DvCatego);
     }
 
     function changeOne(){
-        $DvCatego = $this->modelCateg->GetCate($_POST['tipo']);
-        $this->modelV->TaskChange($_POST['id'],$DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio']);
+        $DvCatego = $this->modelCateg->GetCate($_POST['filtros']);
+        // $this->modelV->TaskChange($_POST['id'],$DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio']);
         header("location:".BASE_URL."home");
+        $this->modelV->TaskChange($_POST['id'],$DvCatego->id_tipo, $_POST['nombre'], $_POST['contenido'], $_POST['precio'], $_POST['descripcion']);
     }
 
     function DeleteVino($id){
@@ -59,14 +63,16 @@ class taskControler{
                 $this->ShowHome();
             }else{
                 $DbThings = $this->modelV->TaskGetOne($_POST['filtros']);
-                $this->view->ShowBevidas($DbThings);
+                $DvCatego = $this->modelCateg->GetCategorias();
+                $this->view->ShowBevidas($DbThings, $DvCatego);
             }
         }else {
             if ($_POST['filtros'] == "Todo") {
                 $this->Invited();
             }else{
                 $DbThings = $this->modelV->TaskGetOne($_POST['filtros']);
-                $this->view->showInvited($DbThings);
+                $DvCatego = $this->modelCateg->GetCategorias();
+                $this->view->showInvited($DbThings, $DvCatego);
             }
         }
         // if ($this->authHelper->isLogIn()) {
@@ -75,11 +81,42 @@ class taskControler{
         //         $this->Invited(dsds);
         // }
     }
+    function detailCategorias(){
+        if ($this->authHelper->isLogIn()) {
+            $DvCatego = $this->modelCateg->GetCategorias();
+            $this->view->showCategorias($DvCatego);
+            }else{
+                $DvCatego = $this->modelCateg->GetCategorias();
+                $this->view->showCategoriasPublic($DvCatego);
+            }
 
+    }
     function detailOfType($tipo){
         $DvCatego = $this->modelCateg->GetCate($tipo);
         $this->view->showDetail($DvCatego);
     }
-
-    
+    function itemDetail($item){
+        $vino = $this->modelV->taskGet($item);
+        $this->view->showItem($vino);
+    }
+    // function changeCat(){
+    //     $DvCatego = $this->modelCateg->UpdateCat();
+    //     $this->ShowHome();
+    // }
+    function addCat(){
+        $this->modelCateg->addCategory($_POST['tipo'], $_POST['descripcion']);
+        $DvCatego = $this->modelCateg->GetCategorias();
+        $this->view->showCategorias($DvCatego);
+    }
+    function updateCat(){
+        $this->modelCateg->UpdCat($_POST['tipo'], $_POST['descripcion']);
+        $DvCatego = $this->modelCateg->GetCategorias();
+        $this->view->showCategorias($DvCatego);
+    }
+    function deleteCat($id){
+        $this->modelCateg->delCat($id);
+        // $this->modelV->deletedCat($id);
+        $DvCatego = $this->modelCateg->GetCategorias();
+        $this->view->showCategorias($DvCatego);
+    }
 }

@@ -10,12 +10,6 @@
             <input placeholder="password" type="password" name="password" id="password" required>
             <input type="submit" value="Enter">
         </form>
-        <form action="register" method="post">
-        <button type="submit">Register</button>
-        </form>
-        <form action="invitado" method="post">
-            <button type="submit">Invited</button>
-        </form>
     <div>
     <h3 class="alert">{$error}</h3>
 </div>
