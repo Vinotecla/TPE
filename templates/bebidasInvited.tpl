@@ -31,19 +31,16 @@
             <tbody id="pedido-ingresado">
             {foreach from=$bevidas item=$b}
                 <tr>
-                        <th>{$b->tipo}</th>
-                        <th>{$b->nombre}</th>
-                        <th>{$b->contenido}ML</th>
-                        <th>${$b->precio}</th>
-                    <tr>
+                    <th><a href='description/{$b->tipo}'>{$b->tipo}</a></th>
+                    <th><a href='item/{$b->id_vinos}'>{$b->nombre}</a></th>
+                    <th>{$b->contenido}ML</th>
+                    <th>${$b->precio}</th>
+                <tr>
             {/foreach}
             </tbody >
         </table>
         <p></p>
     </div>
-    <form action="login" method="post">
-        <button type="submit">Iniciar Sesión</button>
-    </form>
 
 </div>
 {include file="templates/footer.tpl"}

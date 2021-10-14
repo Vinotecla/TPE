@@ -1,14 +1,20 @@
 <?php
 require_once'model/UserModel.php';
 require_once'view/LoginView.php';
+require_once'Helpers/AuthHelper.php';
+require_once'controler/controlerBevidas.php';
 
 class LoginController{
     private $model;
     private $view;
+    private $authHelper;
+    private $controler;
 
     function __construct(){
         $this->model = new UserModel();
         $this->view = new LoginView();
+        $this->authHelper = new AuthHelper();
+        $this->controler = new taskControler();
     }
     
     function logout(){
@@ -18,7 +24,12 @@ class LoginController{
     }
 
     function login(){
-        $this->view->showLogin();
+        if($this->authHelper->isLogIn()){
+            $this->controler->ShowHome();
+        }else{
+            $this->view->showLogin();
+        }
+        
     }
     
     function verifyLogin(){
