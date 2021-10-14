@@ -109,7 +109,7 @@ class taskControler{
         $this->view->showCategorias($DvCatego);
     }
     function updateCat(){
-        $this->modelCateg->UpdCat($_POST['tipo'], $_POST['descripcion']);
+        $this->modelCateg->UpdCat($_POST['filtros'], $_POST['descripcion']);
         $DvCatego = $this->modelCateg->GetCategorias();
         $this->view->showCategorias($DvCatego);
     }

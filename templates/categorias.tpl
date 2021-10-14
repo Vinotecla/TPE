@@ -37,6 +37,7 @@
         <form action='updatecat' method='post'>
             <div class="conteiner">
                 <div>
+                    <select name='filtros'>
                     {include file="templates/selectCategorias.tpl"}
                 </div>
                 <div>
