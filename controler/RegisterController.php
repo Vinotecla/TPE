@@ -1,16 +1,28 @@
 <?php
 require_once'model/UserModel.php';
 require_once'view/RegisterView.php';
+require_once'controler/controlerBevidas.php';
+require_once'Helpers/AuthHelper.php';
 
 class RegisterController{
-    
+    private $model;
+    private $view;
+    private $controler;
+    private $authHelper;
     function __construct(){
         $this->model = new UserModel();
         $this->view = new RegisterView();
+        $this->controler = new taskControler();
+        $this->authHelper = new AuthHelper();
     }
     
     function Register(){
-        $this->view->ShowRegister();
+        if($this->authHelper->isLogIn()){
+            $this->controler->ShowHome();
+        }else{
+            $this->view->ShowRegister();
+        }
+        
     }
 
     function newUser(){

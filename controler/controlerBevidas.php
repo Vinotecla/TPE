@@ -34,7 +34,7 @@ class taskControler{
     function AddVino(){
         $this->authHelper->forceLoggedin();
         $DvCatego = $this->modelCateg->GetCate($_POST['filtros']);
-        $this->modelV->TaskAdd($DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio']);
+        $this->modelV->TaskAdd($DvCatego->id_tipo,$_POST['nombre'],$_POST['contenido'],$_POST['precio'], $_POST['descripcion']);
         header("location:".BASE_URL."home");
     }
 
@@ -111,13 +111,19 @@ class taskControler{
     }
 
     function updateCat(){
+<<<<<<< HEAD
         $this->modelCateg->UpdCat($_POST['tipo'], $_POST['descripcion']);
         header("location:".BASE_URL."home");
+=======
+        $this->modelCateg->UpdCat($_POST['filtros'], $_POST['descripcion']);
+        $DvCatego = $this->modelCateg->GetCategorias();
+        $this->view->showCategorias($DvCatego);
+>>>>>>> 3da448d87bd232591286351f753d33dad19b23a7
     }
 
     function deleteCat($id){
+        $this->modelV->deletedCat($id);
         $this->modelCateg->delCat($id);
-        // $this->modelV->deletedCat($id);
         $DvCatego = $this->modelCateg->GetCategorias();
         $this->view->showCategorias($DvCatego);
     }
