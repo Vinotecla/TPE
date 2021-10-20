@@ -3,9 +3,11 @@
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
 require_once'controler/controlerBevidas.php';
+// require_once'controler/controlerCategorias.php';
 require_once'controler/LoginController.php';
 require_once'controler/RegisterController.php';
 
+// $controlerCatego = new ContCategorias();
 $controler = new taskControler();
 $loginController = new LoginController();
 $registerController = new RegisterController();

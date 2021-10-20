@@ -38,8 +38,8 @@ class taskVinos{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
     
-    function deletedCat($id){
-        $sentencia = $this->db->prepare("DELETE FROM vinos where id_tipo=?");
-        $sentencia->execute(array($id));       
-    }
+    // function deletedCat($id){
+    //     $sentencia = $this->db->prepare("DELETE FROM vinos where id_tipo=?");
+    //     $sentencia->execute(array($id));       
+    // }
 }

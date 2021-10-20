@@ -88,6 +88,9 @@ class taskControler{
         }
     }
 
+
+
+
     function detailOfType($tipo){
         $DvCatego = $this->modelCateg->GetCate($tipo);
         $this->view->showDetail($DvCatego);
@@ -112,7 +115,7 @@ class taskControler{
 
     function deleteCat($id){
         $this->authHelper->forceLoggedin();
-        $this->modelV->deletedCat($id);
+        // $this->modelV->deletedCat($id);
         $this->modelCateg->delCat($id);
         header("location:".BASE_URL."categorias");
     }
