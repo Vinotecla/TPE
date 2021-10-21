@@ -1,20 +1,19 @@
 <?php
-require_once'model/modelCategorias.php';
-require_once'model/modelVinos.php';
-require_once'view/viewBevidas.php';
+require_once'model/CategoryModel.php';
+require_once'model/VinosModel.php';
 require_once'Helpers/AuthHelper.php';
+require_once'view/VinosView.php';
 
 class VinoController{
-
     private $modelCateg;
     private $modelV;
     private $view;
     private $authHelper;
 
     function __construct(){
-        $this->modelCateg = new taskCategoria();
-        $this->modelV = new taskVinos();
-        $this->view = new classView();
+        $this->modelCateg = new CategoryModel();
+        $this->modelV = new VinosModel();
+        $this->view = new VinosView();
         $this->authHelper = new AuthHelper();
     }
 
@@ -58,6 +57,11 @@ class VinoController{
         header("location:".BASE_URL."home");
     }
 
+    function DetailOfVino($item){
+        $vino = $this->modelV->GetVinosYCategoriasByIdVino($item);
+        $this->view->showItem($vino);
+    }
+
     function filtrarVino(){
         if ($this->authHelper->isLogIn()) {
             if ($_POST['filtros'] == "Todo") {
@@ -75,12 +79,8 @@ class VinoController{
                 $DbThings = $this->modelV->GetOneVinoByTipo($_POST['filtros']);
                 $DvCatego = $this->modelCateg->GetCategoriaTipos();
                 $this->view->showInvited($DbThings, $DvCatego);
+                
             }
         }
-    }
-
-    function DetailOfVino($item){
-        $vino = $this->modelV->GetVinosYCategoriasByIdVino($item);
-        $this->view->showItem($vino);
     }
 }

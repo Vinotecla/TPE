@@ -1,8 +1,8 @@
 <?php
 require_once'model/UserModel.php';
-require_once'view/LoginView.php';
 require_once'Helpers/AuthHelper.php';
-require_once'controler/controlerVinos.php';
+require_once'controler/VinoController.php';
+require_once'view/LoginView.php';
 
 class LoginController{
     private $model;
@@ -14,7 +14,7 @@ class LoginController{
         $this->model = new UserModel();
         $this->view = new LoginView();
         $this->authHelper = new AuthHelper();
-        $this->controler = new taskControler();
+        $this->controler = new VinoController();
     }
     
     function logout(){

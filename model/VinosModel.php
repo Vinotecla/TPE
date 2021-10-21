@@ -1,6 +1,6 @@
 <?php
 
-class taskVinos{
+class VinosModel{
 
     private $db;
 

@@ -1,13 +1,15 @@
 <?php
-
-require_once'model/modelCategorias.php';
-require_once'view/CategoriesView.php';
+require_once'model/CategoryModel.php';
 require_once'Helpers/AuthHelper.php';
+require_once'view/CategoryView.php';
 
 class CategoryController{
+    private $modelCateg;
+    private $view;
+    private $authHelper;
 
     function __construct(){
-        $this->modelCateg = new taskCategoria();
+        $this->modelCateg = new CategoryModel();
         $this->view = new CategoriesView();
         $this->authHelper = new AuthHelper();
     }

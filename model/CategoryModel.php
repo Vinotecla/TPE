@@ -1,6 +1,6 @@
 <?php
 
-class taskCategoria {
+class CategoryModel {
 
     private $db;
     

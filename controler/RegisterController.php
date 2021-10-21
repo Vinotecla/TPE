@@ -1,18 +1,19 @@
 <?php
 require_once'model/UserModel.php';
-require_once'view/RegisterView.php';
-require_once'controler/controlerVinos.php';
 require_once'Helpers/AuthHelper.php';
+require_once'controler/VinoController.php';
+require_once'view/RegisterView.php';
 
 class RegisterController{
     private $model;
     private $view;
     private $controler;
     private $authHelper;
+
     function __construct(){
         $this->model = new UserModel();
         $this->view = new RegisterView();
-        $this->controler = new taskControler();
+        $this->controler = new VinoController();
         $this->authHelper = new AuthHelper();
     }
     
