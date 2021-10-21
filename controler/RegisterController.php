@@ -1,7 +1,7 @@
 <?php
 require_once'model/UserModel.php';
 require_once'view/RegisterView.php';
-require_once'controler/controlerBevidas.php';
+require_once'controler/controlerVinos.php';
 require_once'Helpers/AuthHelper.php';
 
 class RegisterController{

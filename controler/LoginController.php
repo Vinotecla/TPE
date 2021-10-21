@@ -2,7 +2,7 @@
 require_once'model/UserModel.php';
 require_once'view/LoginView.php';
 require_once'Helpers/AuthHelper.php';
-require_once'controler/controlerBevidas.php';
+require_once'controler/controlerVinos.php';
 
 class LoginController{
     private $model;

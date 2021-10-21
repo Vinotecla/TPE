@@ -1,31 +1,66 @@
 <?php
 
 class taskCategoria {
+
+    private $db;
     
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=web2;charset=utf8', 'root', '');
     }
 
-    function GetCate($tipo){
-        $sentencia = $this->db->prepare( "SELECT * FROM categorias where tipo=?");
-        $sentencia->execute(array($tipo));
-        return $sentencia->fetch(PDO::FETCH_OBJ);
+    function addCategory($a,$b){
+        $sentencia = $this->db->prepare("INSERT INTO categoria(tipo, descripcion) VALUES(?,?)");
+        $sentencia->execute(array($a,$b));
     }
-    function GetCategorias(){
-        $sentencia = $this->db->prepare( "SELECT * FROM categorias");
+
+    function UpdCat($tipo, $descripcion){
+        $sentencia = $this->db->prepare("UPDATE categoria SET descripcion=? WHERE tipo=?"); 
+        $sentencia->execute(array($descripcion, $tipo));
+    }
+
+    function delCat($id){
+        $sentencia = $this->db->prepare("DELETE FROM categoria where id_tipo=?");    
+        $sentencia->execute(array($id)); 
+    }
+    
+    
+
+    function GetCategoriaTipos(){
+        $sentencia = $this->db->prepare( "SELECT categoria.tipo FROM categoria");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
-    function addCategory($a,$b){
-        $sentencia = $this->db->prepare("INSERT INTO categorias(tipo, descripcion) VALUES(?,?)");
-        $sentencia->execute(array($a,$b));
+
+    function GetAllInCategorias(){
+        $sentencia = $this->db->prepare( "SELECT * FROM categoria");
+        $sentencia->execute();
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
-    function UpdCat($tipo, $descripcion){
-        $sentencia = $this->db->prepare("UPDATE categorias SET descripcion=? WHERE tipo=?"); 
-        $sentencia->execute(array($descripcion, $tipo));
+
+    function GetCate($tipo){
+        $sentencia = $this->db->prepare( "SELECT categoria.id_tipo FROM categoria where tipo=?");
+        $sentencia->execute(array($tipo));
+        return $sentencia->fetch(PDO::FETCH_OBJ);
     }
-    function delCat($id){
-        $sentencia = $this->db->prepare("DELETE FROM categorias where id_tipo=?");    
-        $sentencia->execute(array($id)); 
+
+    function GetCategoriasByTipo($tipo){
+        $sentencia = $this->db->prepare( "SELECT * FROM categoria where tipo=?");
+        $sentencia->execute(array($tipo));
+        return $sentencia->fetch(PDO::FETCH_OBJ);
     }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
 }
