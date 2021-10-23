@@ -75,6 +75,11 @@ switch ($param[0]) {
     case 'deletecat':
         echo $categoryController -> deleteCat($param[1]);
         break;
+        //Prueba
+    case 'variedad':
+        echo $vinoController ->variedadVino($param[1]); 
+        break;
+        //Prueba
     default:
         break;
 }
