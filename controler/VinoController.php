@@ -64,38 +64,28 @@ class VinoController{
 
     function filtrarVino(){
         if ($this->authHelper->isLogIn()) {
-           if (!isset($_POST['filtros'])){
-            $this->ShowHome();
-            
-           }
-            else if ($_POST['filtros'] == "Todo") {
+            if (!isset($_POST['filtros'])){
                 $this->ShowHome();
-                
-            }
-            else {
+            } else if ($_POST['filtros'] == "Todo") {
+                $this->ShowHome();
+            } else {
                 header("location:".BASE_URL."variedad/".$_POST['filtros']);
                 // $DbThings = $this->modelV->GetOneVinoByTipo($_POST['filtros']);
                 // $DvCatego = $this->modelCateg->GetCategoriaTipos();
-                // $this->view->ShowBevidas($DbThings, $DvCatego);
-                
+                // $this->view->ShowBevidas($DbThings, $DvCatego); 
             }
-        }
-        else {
+        } else {
             if ($_POST['filtros'] == "Todo") {
                 $this->Invited();
-                
-            }
-            else{
+            } else{
                 header("location:".BASE_URL."variedad/".$_POST['filtros']);
                 // $DbThings = $this->modelV->GetOneVinoByTipo($_POST['filtros']);
                 // $DvCatego = $this->modelCateg->GetCategoriaTipos();
                 // $this->view->showInvited($DbThings, $DvCatego);
-                
-                
             }
-        // }
         }
     }
+
     function variedadVino($tipo){
         if ($this->authHelper->isLogIn()){
             $DbThings = $this->modelV->GetOneVinoByTipo($tipo);
@@ -106,8 +96,5 @@ class VinoController{
             $DvCatego = $this->modelCateg->GetCategoriaTipos();
             $this->view->showInvited($DbThings, $DvCatego);
         }
-
-                
     }
-      
 }
