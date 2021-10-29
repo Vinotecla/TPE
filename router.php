@@ -60,6 +60,9 @@ switch ($param[0]) {
     case 'modificar':
         echo $vinoController -> showModificarVino($param[1]);
         break;
+    case 'variedad':
+        echo $vinoController ->variedadVino($param[1]); 
+    break;
     case 'description':
         echo $categoryController -> detailOfCatego($param[1]);
         break;
@@ -74,9 +77,6 @@ switch ($param[0]) {
         break;
     case 'deletecat':
         echo $categoryController -> deleteCat($param[1]);
-        break;
-    case 'variedad':
-        echo $vinoController ->variedadVino($param[1]); 
         break;
     default:
         break;

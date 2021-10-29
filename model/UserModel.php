@@ -16,6 +16,5 @@ class UserModel{
     function addUser($a,$b){
         $sentencia = $this->db->prepare("INSERT INTO usuario(email,password) VALUES(?,?)");
         $sentencia->execute(array($a,$b));
-
     }
 }

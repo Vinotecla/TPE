@@ -29,7 +29,6 @@ class LoginController{
         }else{
             $this->view->showLogin();
         }
-        
     }
     
     function verifyLogin(){
@@ -43,10 +42,8 @@ class LoginController{
      
             // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->password)) {
-
                 session_start();
                 $_SESSION["email"] = $email;
-                
                 $this->view->showHome();
             } else {
                 $this->view->showLogin("Access denied");
