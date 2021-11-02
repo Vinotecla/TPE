@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2021 a las 17:25:19
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
+-- Tiempo de generación: 02-11-2021 a las 02:44:02
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,18 +52,17 @@ INSERT INTO `categoria` (`id_tipo`, `descripcion`, `tipo`) VALUES
 CREATE TABLE `usuario` (
   `id_users` int(5) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `password` varchar(150) NOT NULL
+  `password` varchar(150) NOT NULL,
+  `Admin` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_users`, `email`, `password`) VALUES
-(6, 'k@', '$2y$10$kwTDR/5Xl8S5o4T.Bag9L.flFD/SIxhCGoy5pKn34QWFoFFA9Ltcq'),
-(7, 'k@', '$2y$10$JyMg8EsIkpGHDczr/8vFjuRgVkWYvMC/FCZLypI1o/IZdc.DNJ/.O'),
-(8, 'ke@', '$2y$10$G7LlhRuXMkC9IOxkBuDPYuySX4Fb9SqQ9XG8rjyryB8kCq1QzOnha'),
-(9, 'h@', '$2y$10$VnqezzgogJbxqZ7BARFrX.l9RPsl2BESs0I9KLTwzX7UcpL8gNC/S');
+INSERT INTO `usuario` (`id_users`, `email`, `password`, `Admin`) VALUES
+(12, 'admin', '$2y$10$zv3icaqL2.m1/eDYewfwyOdH.yrG6EhVpqYQHseBLWB2uvEn0MJWa', 1),
+(13, 'noadmin', '$2y$10$0tFeBRXcKEuM2U50KpR7k.8nOiZ8zVdwcgJurpaEa1RONaYW/WTpS', NULL);
 
 -- --------------------------------------------------------
 
@@ -131,7 +130,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_users` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_users` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `vino`

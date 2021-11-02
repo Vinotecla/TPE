@@ -15,6 +15,13 @@ class VinosView {
         $this->smarty->assign('category', $category);
         $this->smarty->display('templates\bevidas.tpl');
     }
+    
+    function showEdition($bevidas, $category, $users){
+        $this->smarty->assign('bevidas', $bevidas);
+        $this->smarty->assign('category', $category);
+        $this->smarty->assign('users', $users);
+        $this->smarty->display('templates\admin.tpl');
+    }
 
     function showInvited($bevidas, $category){
         $this->smarty->assign('bevidas', $bevidas);

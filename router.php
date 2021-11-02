@@ -78,6 +78,15 @@ switch ($param[0]) {
     case 'deletecat':
         echo $categoryController -> deleteCat($param[1]);
         break;
+    case 'admin':
+        echo $vinoController -> Admin();
+        break;
+    case 'deleteUser':
+        echo $registerController -> deleteUser($param[1]);
+        break;
+    case 'changePermission':
+        echo $registerController -> permissionChange($param[1]);
+        break;
     default:
         break;
 }

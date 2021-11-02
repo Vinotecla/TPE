@@ -44,10 +44,22 @@ class LoginController{
             if ($user && password_verify($password, $user->password)) {
                 session_start();
                 $_SESSION["email"] = $email;
-                $this->view->showHome();
+                $this->verifyAdmin();
+                // $this->view->showHome();
             } else {
                 $this->view->showLogin("Access denied");
             }
+        }
+    }
+
+    function verifyAdmin(){
+        $email = $_POST['email'];
+        $user = $this->model->getUser($email);
+        if($user->Admin == !null){
+            $this->view->showAdmin();
+        }
+        else{
+            $this->view->showHome();
         }
     }
 }

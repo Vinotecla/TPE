@@ -17,4 +17,9 @@ class LoginView{
     function showHome(){
         header("Location: ".BASE_URL."home");
     }
+
+    function showAdmin(){
+        header("Location: ".BASE_URL."admin");
+    }
+    
 }

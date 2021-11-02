@@ -31,4 +31,22 @@ class RegisterController{
         $this->model->addUser($email, $password);
         header("location:".BASE_URL."login");
     }
+
+    function deleteUser($email){
+        $this->model->delUser($email);
+        header("location:".BASE_URL."admin");
+    }
+
+    function permissionChange($email){
+        $user = $this->model-> getUser($email);
+        if($user->Admin ==!null){
+            $status = null;
+            $this->model->changeStatus($status, $email);
+        }
+        else{
+            $status = !null;
+            $this->model->changeStatus($status, $email);
+        }
+        header("location:".BASE_URL."admin");
+    }
 }

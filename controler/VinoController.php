@@ -1,20 +1,25 @@
 <?php
 require_once'model/CategoryModel.php';
 require_once'model/VinosModel.php';
+require_once'model/UserModel.php';
 require_once'Helpers/AuthHelper.php';
 require_once'view/VinosView.php';
 
 class VinoController{
     private $modelCateg;
     private $modelV;
+    private $modelUser;
     private $view;
     private $authHelper;
+    
 
     function __construct(){
         $this->modelCateg = new CategoryModel();
         $this->modelV = new VinosModel();
+        $this->modelUser = new UserModel();
         $this->view = new VinosView();
         $this->authHelper = new AuthHelper();
+        
     }
 
     function ShowHome(){
@@ -23,7 +28,15 @@ class VinoController{
         $DvCatego = $this->modelCateg->GetCategoriaTipos();
         $this->view->ShowBevidas($DbThings, $DvCatego);
     }
-
+    //ADMIN
+    function Admin(){
+        $this->authHelper->forceLoggedin();
+        $DbThings = $this->modelV->GetVinosYCategoriasTipo();
+        $DvCatego = $this->modelCateg->GetCategoriaTipos();
+        $DbUser = $this->modelUser->getAlluser();
+        $this->view->showEdition($DbThings, $DvCatego, $DbUser);
+    }
+    //ADMIN
     function Invited(){
         $DbThings = $this->modelV->GetVinosYCategoriasTipo();
         $DvCatego = $this->modelCateg->GetCategoriaTipos();
