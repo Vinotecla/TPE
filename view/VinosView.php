@@ -16,7 +16,7 @@ class VinosView {
         $this->smarty->display('templates\bevidas.tpl');
     }
     
-    function showEdition($bevidas, $category, $users){
+    function showAdmin($bevidas, $category, $users){
         $this->smarty->assign('bevidas', $bevidas);
         $this->smarty->assign('category', $category);
         $this->smarty->assign('users', $users);
@@ -39,4 +39,13 @@ class VinosView {
         $this->smarty->assign('d', $vinoYcatego);
         $this->smarty->display('templates\detailOfItem.tpl');
     }
+    function showItemAdmin($vinoYcatego){
+        $this->smarty->assign('d', $vinoYcatego);
+        $this->smarty->display('templates\detailOfItemAdmin.tpl');
+    }
+    function showItemInvited($vinoYcatego){
+        $this->smarty->assign('d', $vinoYcatego);
+        $this->smarty->display('templates\detailOfItemInvited.tpl');
+    }
+    
 }

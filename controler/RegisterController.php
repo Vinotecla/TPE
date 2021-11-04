@@ -7,19 +7,19 @@ require_once'view/RegisterView.php';
 class RegisterController{
     private $model;
     private $view;
-    private $controler;
+    private $vinoController;
     private $authHelper;
 
     function __construct(){
         $this->model = new UserModel();
         $this->view = new RegisterView();
-        $this->controler = new VinoController();
+        $this->vinoController = new VinoController();
         $this->authHelper = new AuthHelper();
     }
     
     function Register(){
         if($this->authHelper->isLogIn()){
-            $this->controler->ShowHome();
+            $this->vinoController->ShowHome();
         }else{
             $this->view->ShowRegister();
         }
@@ -29,7 +29,9 @@ class RegisterController{
         $email = $_POST['email'];
         $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $this->model->addUser($email, $password);
-        header("location:".BASE_URL."login");
+        session_start();
+        $_SESSION["email"] = $email;
+        header("location:".BASE_URL."home");
     }
 
     function deleteUser($email){

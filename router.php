@@ -62,7 +62,7 @@ switch ($param[0]) {
         break;
     case 'variedad':
         echo $vinoController ->variedadVino($param[1]); 
-    break;
+        break;
     case 'description':
         echo $categoryController -> detailOfCatego($param[1]);
         break;
@@ -79,13 +79,16 @@ switch ($param[0]) {
         echo $categoryController -> deleteCat($param[1]);
         break;
     case 'admin':
-        echo $vinoController -> Admin();
+        echo $vinoController -> ShowHome();
         break;
     case 'deleteUser':
         echo $registerController -> deleteUser($param[1]);
         break;
     case 'changePermission':
         echo $registerController -> permissionChange($param[1]);
+        break;
+    case 'itemAdmin':
+        echo $vinoController -> DetailOfVino($param[1]);
         break;
     default:
         break;

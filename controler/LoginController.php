@@ -33,33 +33,22 @@ class LoginController{
     
     function verifyLogin(){
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
-            //Obtengo usuario y contraseña por post
             $email = $_POST['email'];
             $password =$_POST['password'];
 
-            // Obtengo el usuario de la base de datos
             $user = $this->model->getUser($email);
-     
-            // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->password)) {
                 session_start();
                 $_SESSION["email"] = $email;
-                $this->verifyAdmin();
-                // $this->view->showHome();
+                $user = $this->authHelper->verifyAdmin($email);
+                if($user != null){
+                    $this->view->showAdmin();
+                }else{
+                    $this->view->showHome();
+                }
             } else {
                 $this->view->showLogin("Access denied");
             }
-        }
-    }
-
-    function verifyAdmin(){
-        $email = $_POST['email'];
-        $user = $this->model->getUser($email);
-        if($user->Admin == !null){
-            $this->view->showAdmin();
-        }
-        else{
-            $this->view->showHome();
         }
     }
 }

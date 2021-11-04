@@ -26,17 +26,14 @@ class VinoController{
         $this->authHelper->forceLoggedin();
         $DbThings = $this->modelV->GetVinosYCategoriasTipo();
         $DvCatego = $this->modelCateg->GetCategoriaTipos();
-        $this->view->ShowBevidas($DbThings, $DvCatego);
+        if($this->authHelper->verifyAdmin()){
+            $DbUser = $this->modelUser->getAlluser();
+            $this->view->showAdmin($DbThings, $DvCatego, $DbUser);
+        }else{
+            $this->view->ShowBevidas($DbThings, $DvCatego);
+        }
+       
     }
-    //ADMIN
-    function Admin(){
-        $this->authHelper->forceLoggedin();
-        $DbThings = $this->modelV->GetVinosYCategoriasTipo();
-        $DvCatego = $this->modelCateg->GetCategoriaTipos();
-        $DbUser = $this->modelUser->getAlluser();
-        $this->view->showEdition($DbThings, $DvCatego, $DbUser);
-    }
-    //ADMIN
     function Invited(){
         $DbThings = $this->modelV->GetVinosYCategoriasTipo();
         $DvCatego = $this->modelCateg->GetCategoriaTipos();
@@ -71,8 +68,19 @@ class VinoController{
     }
 
     function DetailOfVino($item){
-        $vino = $this->modelV->GetVinosYCategoriasByIdVino($item);
-        $this->view->showItem($vino);
+        if($this->authHelper->isLogIn()){
+            if($this->authHelper->verifyAdmin()){
+                $vino = $this->modelV->GetVinosYCategoriasByIdVino($item);
+                $this->view->showItemAdmin($vino);
+            }else{
+                $vino = $this->modelV->GetVinosYCategoriasByIdVino($item);
+                $this->view->showItem($vino);
+            }
+        }else{
+            $vino = $this->modelV->GetVinosYCategoriasByIdVino($item);
+            $this->view->showItemInvited($vino);
+        }
+
     }
 
     function filtrarVino(){

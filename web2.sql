@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2021 a las 02:44:02
+-- Tiempo de generación: 04-11-2021 a las 05:33:01
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -46,6 +46,29 @@ INSERT INTO `categoria` (`id_tipo`, `descripcion`, `tipo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_comentario` int(11) NOT NULL,
+  `comentario` text NOT NULL,
+  `puntaje` int(11) NOT NULL,
+  `id_vino` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentario`, `comentario`, `puntaje`, `id_vino`) VALUES
+(33, '', 1, 96),
+(36, '', 1, 96),
+(43, '', 1, 106),
+(44, '', 1, 106);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -62,7 +85,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_users`, `email`, `password`, `Admin`) VALUES
 (12, 'admin', '$2y$10$zv3icaqL2.m1/eDYewfwyOdH.yrG6EhVpqYQHseBLWB2uvEn0MJWa', 1),
-(13, 'noadmin', '$2y$10$0tFeBRXcKEuM2U50KpR7k.8nOiZ8zVdwcgJurpaEa1RONaYW/WTpS', NULL);
+(13, 'noadmin', '$2y$10$0tFeBRXcKEuM2U50KpR7k.8nOiZ8zVdwcgJurpaEa1RONaYW/WTpS', NULL),
+(16, 'Chau@gmail.com', '$2y$10$fH4aViJcm4wm9y0kVqHibeVbtWs9Qg0LSGEINgYCXPj0AeDN/ItWK', NULL);
 
 -- --------------------------------------------------------
 
@@ -83,13 +107,12 @@ CREATE TABLE `vino` (
 --
 
 INSERT INTO `vino` (`id_vinos`, `id_tipo`, `nombre`, `contenido`, `precio`) VALUES
-(86, 3, '', 0, 0),
-(96, 3, 'yjtyj', 786, 786),
-(98, 4, 'RTHRY', 8676, 786768),
-(106, 4, 'ukukuk', 2147483647, 0),
-(109, 4, '', 0, 0),
-(110, 5, '´7ii7i7i77', 0, 0),
-(111, 2, 'pppp', 7777, 7777);
+(96, 3, 'Toro Viejo', 786, 400),
+(98, 4, 'Benjamin', 1000, 1000),
+(106, 4, 'Santa Julia', 750, 0),
+(109, 4, 'Dada', 0, 0),
+(110, 5, '´Alaris', 0, 0),
+(112, 5, 'Benjamin', 750, 1000);
 
 --
 -- Índices para tablas volcadas
@@ -100,6 +123,12 @@ INSERT INTO `vino` (`id_vinos`, `id_tipo`, `nombre`, `contenido`, `precio`) VALU
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_tipo`);
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_comentario`);
 
 --
 -- Indices de la tabla `usuario`
@@ -127,16 +156,22 @@ ALTER TABLE `categoria`
   MODIFY `id_tipo` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_users` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_users` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `vino`
 --
 ALTER TABLE `vino`
-  MODIFY `id_vinos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id_vinos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- Restricciones para tablas volcadas

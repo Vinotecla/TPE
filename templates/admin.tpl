@@ -33,7 +33,7 @@
             {foreach from=$bevidas item=$b}
                 <tr>
                     <th><a href='description/{$b->tipo}'>{$b->tipo}</a></th>
-                    <th><a href='item/{$b->id_vinos}'>{$b->nombre}</a></th>
+                    <th><a href='itemAdmin/{$b->id_vinos}'>{$b->nombre}</a></th>
                     <th>{$b->contenido}ML</th>
                     <th>${$b->precio}</th>
                     <th><a type="button" href='delete/{$b->id_vinos}'>BORRAR</a></th>

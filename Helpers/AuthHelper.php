@@ -1,8 +1,12 @@
 <?php
+require_once'model/UserModel.php';
 
 class AuthHelper{
+    private $modelUser;
 
-    function __construct(){}
+    function __construct(){
+        $this->modelUser = new UserModel();
+    }
 
     function forceLoggedin(){
         if(!$this->isLogIn()){
@@ -15,5 +19,15 @@ class AuthHelper{
             session_start();
         }
         return isset($_SESSION["email"]);
+    }
+    
+    function verifyAdmin(){
+        $email = $_SESSION['email'];
+        $user = $this->modelUser->getUser($email);
+        if($user->Admin == !null){
+            return !null;
+        }else{
+            return null;
+        }
     }
 }
