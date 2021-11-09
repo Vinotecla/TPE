@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2021 a las 05:33:01
+-- Tiempo de generación: 09-11-2021 a las 04:48:15
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -61,10 +61,31 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id_comentario`, `comentario`, `puntaje`, `id_vino`) VALUES
-(33, '', 1, 96),
-(36, '', 1, 96),
 (43, '', 1, 106),
-(44, '', 1, 106);
+(44, '', 1, 106),
+(78, 'BUEN SABOR', 3, 96),
+(79, 'NO BORRA', 3, 96),
+(80, 'SARASA', 3, 96),
+(81, 'ENVIANDO', 5, 96),
+(82, 'SATURNO', 4, 96),
+(83, 'SILVER', 4, 96),
+(84, 'ONE', 1, 96),
+(97, 'SARASA', 1, 113),
+(98, 'NO BORRA', 5, 113),
+(99, 'ahora', 3, 113),
+(100, 'BUEN SABOR', 1, 98),
+(101, 'SARASA', 4, 98),
+(102, 'NO BORRA', 2, 98),
+(103, 'INTENSO', 1, 106),
+(104, 'INTENSO', 1, 106),
+(105, 'SUAVE', 5, 106),
+(106, 'CREMOSO', 2, 106),
+(107, 'SABADO', 1, 109),
+(108, 'LECHUGA', 3, 109),
+(109, 'NORUEGA', 4, 109),
+(110, 'BUEN SABOR', 4, 110),
+(111, 'RITMO', 3, 110),
+(112, 'SARASA', 2, 110);
 
 -- --------------------------------------------------------
 
@@ -85,8 +106,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_users`, `email`, `password`, `Admin`) VALUES
 (12, 'admin', '$2y$10$zv3icaqL2.m1/eDYewfwyOdH.yrG6EhVpqYQHseBLWB2uvEn0MJWa', 1),
-(13, 'noadmin', '$2y$10$0tFeBRXcKEuM2U50KpR7k.8nOiZ8zVdwcgJurpaEa1RONaYW/WTpS', NULL),
-(16, 'Chau@gmail.com', '$2y$10$fH4aViJcm4wm9y0kVqHibeVbtWs9Qg0LSGEINgYCXPj0AeDN/ItWK', NULL);
+(13, 'noadmin', '$2y$10$0tFeBRXcKEuM2U50KpR7k.8nOiZ8zVdwcgJurpaEa1RONaYW/WTpS', NULL);
 
 -- --------------------------------------------------------
 
@@ -111,8 +131,7 @@ INSERT INTO `vino` (`id_vinos`, `id_tipo`, `nombre`, `contenido`, `precio`) VALU
 (98, 4, 'Benjamin', 1000, 1000),
 (106, 4, 'Santa Julia', 750, 0),
 (109, 4, 'Dada', 0, 0),
-(110, 5, '´Alaris', 0, 0),
-(112, 5, 'Benjamin', 750, 1000);
+(110, 2, 'Alaris', 1000, 200);
 
 --
 -- Índices para tablas volcadas
@@ -153,13 +172,13 @@ ALTER TABLE `vino`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_tipo` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_tipo` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -171,7 +190,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `vino`
 --
 ALTER TABLE `vino`
-  MODIFY `id_vinos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id_vinos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- Restricciones para tablas volcadas

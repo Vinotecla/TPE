@@ -61,7 +61,7 @@ switch ($param[0]) {
         echo $vinoController -> showModificarVino($param[1]);
         break;
     case 'variedad':
-        echo $vinoController ->variedadVino($param[1]); 
+        echo $vinoController ->variedadVino($param[1]);
         break;
     case 'description':
         echo $categoryController -> detailOfCatego($param[1]);

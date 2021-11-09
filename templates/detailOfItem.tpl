@@ -23,13 +23,39 @@
             </select>
         </div>
         <input value='Enviar' type="submit">
-    </form>`
     </div>
-    <div class='contenedorbebidas' >
-        <table id='comments-view'>
-        </table>
+    </form>
+    <div>
+        <form name='puntaje-filtro' id='form-filtro'>
+            <select name='puntaje-filtro' id='puntaje-filtro'>
+                <option value='Todos'>Todos</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+            </select>
+            <input type="submit" value="Filtrar">
+        </form>
     </div>
-        <form action="logout" method="post">
+        <div>
+        <form name='puntaje-orden' id='form-orden'>
+            <select name='puntaje-filtro' id='orden'>
+                <option value='Mayor Puntaje'>Mayor Puntaje</option>
+                <option value='Menor Puntaje'>Menor Puntaje</option>
+                <option value='Mas Antiguo'>Más Antiguo</option>
+                <option value='Mas Reciente'>Más Reciente</option>
+            </select>
+            <input type="submit" value="Ordenar">
+        </form>
+    </div>
+    <div id='contenedor-comentarios' >
+    </div>
+    <table id='contenedor-comentario'>
+    </table>
+    <table id='comments-view'>
+    </table>
+    <form action="logout" method="post">
         <button type="submit">logout</button>
     </form>
 <script src="./js/comments.js"></script>
