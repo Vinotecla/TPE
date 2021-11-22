@@ -13,10 +13,12 @@ class UserModel{
         $query->execute([$email]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
+
     function addUser($a,$b){
         $sentencia = $this->db->prepare("INSERT INTO usuario(email,password) VALUES(?,?)");
         $sentencia->execute(array($a,$b));
     }
+    
     function getAlluser(){
         $query = $this->db->prepare('SELECT * FROM usuario');
         $query->execute();

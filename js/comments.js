@@ -1,15 +1,22 @@
 'use strict'
+
 const API_URL = "api/comentarios";
+
 let id_vino = parseInt(document.getElementById('comments').value);
 let formComment = document.querySelector("#form-comment");
+
 if(formComment){
     formComment.addEventListener('submit', sendComment);
 }
+
 let btn_scoreFilter = document.querySelector('#form-filtro');
+
 if(btn_scoreFilter){
     btn_scoreFilter.addEventListener('submit', scoreFilter);
 }
+
 let btn_commentsOrder = document.querySelector('#form-orden');
+
 if(btn_commentsOrder){
     btn_commentsOrder.addEventListener('submit', orderComments);
 }
@@ -28,6 +35,7 @@ async function orderComments(e){
         console.log(e);
     }
 }
+
 async function scoreFilter(e){
     e.preventDefault();
     console.log('FILTRANDO');
@@ -171,4 +179,3 @@ function deleteComment(){
 }
 
 getComments(id_vino);
-

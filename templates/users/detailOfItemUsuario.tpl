@@ -1,4 +1,11 @@
 {include file="templates/header.tpl"}
+
+    <nav>
+        <article  id="menu">
+            <section><a href='home'>Admin</a></section>
+            <section><a href='categorias'>Categorias</a></section>
+        </article>
+    </nav>
     <h3>{$d->nombre}</h3>
     <p>{$d->tipo}</p>
     <p>{$d->descripcion}</p>

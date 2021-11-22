@@ -1,4 +1,12 @@
 {include file="templates/header.tpl"}
+<nav>
+    <article  id="menu">
+        <section><a href='login'>Login</a></section>
+        <section><a href='register'>Registro</a></section>
+        <section><a href='invitado'>Invitado</a></section>
+        <section><a href='categorias'>Categorias</a></section>
+    </article>
+</nav>
 <div class="contenido">
     <div>
         <h2>Nuestros vinos</h2>
@@ -36,39 +44,12 @@
                     <th><a href='item/{$b->id_vinos}'>{$b->nombre}</a></th>
                     <th>{$b->contenido}ML</th>
                     <th>${$b->precio}</th>
-                    <th><a type="button" href='delete/{$b->id_vinos}'>BORRAR</a></th>
-                    <th><a type="button" href='modificar/{$b->id_vinos}'>MODIFICAR</a>
-                    </th>
                 <tr>
             {/foreach}
             </tbody >
         </table>
+        <p></p>
     </div>
-    <form action="add" method="post">
-        <div class="conteiner">
-            <div>
-            <select name='filtros'>
-            {include file="templates/selectCategorias.tpl"}
-            </div>
-            <div>
-                <input type="text" placeholder="Ingrese Nombre" name="nombre">
-            </div>
-            <div>
-                <input type="number" placeholder="Ingrese Contenido" name="contenido">
-            </div>
-            <div>
-                <input type="number"  placeholder="Ingrese Precio" name="precio">
-            </div>
-        </div>
-        <div class="conteiner">
-            <div>
-                <button type="submit">AGREGAR</button>
-            </div>
-        </div>
-    </form>
-    <form action="logout" method="post">
-        <button type="submit">logout</button>
-    </form>
 
 </div>
 {include file="templates/footer.tpl"}

@@ -10,42 +10,44 @@ class VinosView {
         $this->smarty = new Smarty();
     }
 
-    function ShowBevidas($bevidas, $category){
-        $this->smarty->assign('bevidas', $bevidas);
-        $this->smarty->assign('category', $category);
-        $this->smarty->display('templates\bevidas.tpl');
-    }
-    
     function showAdmin($bevidas, $category, $users){
         $this->smarty->assign('bevidas', $bevidas);
         $this->smarty->assign('category', $category);
         $this->smarty->assign('users', $users);
-        $this->smarty->display('templates\admin.tpl');
+        $this->smarty->display('templates/admin/bebidasAdmin.tpl');
+    }
+
+    function showItemAdmin($bevidasYcategory){
+        $this->smarty->assign('d', $bevidasYcategory);
+        $this->smarty->display('templates/admin/detailOfItemAdmin.tpl');
+    }
+
+    function ShowBevidas($bevidas, $category){
+        $this->smarty->assign('bevidas', $bevidas);
+        $this->smarty->assign('category', $category);
+        $this->smarty->display('templates/users/bevidasUsuario.tpl');
+    }
+    
+    function showItem($bevidasYcategory){
+        $this->smarty->assign('d', $bevidasYcategory);
+        $this->smarty->display('templates/users/detailOfItemUsuario.tpl');
     }
 
     function showInvited($bevidas, $category){
         $this->smarty->assign('bevidas', $bevidas);
         $this->smarty->assign('category', $category);
-        $this->smarty->display('templates\bebidasInvited.tpl');
+        $this->smarty->display('templates/invited/bebidasInvited.tpl');
     }
 
-    function showModificar($vino, $category){
-        $this->smarty->assign('vino', $vino);
+    function showItemInvited($bevidasYcategory){
+        $this->smarty->assign('d', $bevidasYcategory);
+        $this->smarty->display('templates/invited/detailOfItemInvited.tpl');
+    }
+
+    function showModificar($bevidas, $category){
+        $this->smarty->assign('vino', $bevidas);
         $this->smarty->assign('category', $category);
-        $this->smarty->display('templates\modificandoTable.tpl');
-    }
-    
-    function showItem($vinoYcatego){
-        $this->smarty->assign('d', $vinoYcatego);
-        $this->smarty->display('templates\detailOfItem.tpl');
-    }
-    function showItemAdmin($vinoYcatego){
-        $this->smarty->assign('d', $vinoYcatego);
-        $this->smarty->display('templates\detailOfItemAdmin.tpl');
-    }
-    function showItemInvited($vinoYcatego){
-        $this->smarty->assign('d', $vinoYcatego);
-        $this->smarty->display('templates\detailOfItemInvited.tpl');
+        $this->smarty->display('templates/admin/modificandoBebidas.tpl');
     }
     
 }

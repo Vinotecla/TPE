@@ -7,18 +7,23 @@ class CategoriesView{
         $this->smarty = new Smarty();
     }    
 
-    function showDetail($categorias){
-        $this->smarty->assign('d', $categorias);
-        $this->smarty->display('templates\detailOfProdocts.tpl');
+    function showDetail($category){
+        $this->smarty->assign('category', $category);
+        $this->smarty->display('templates/detailOfCategorias.tpl');
     }
 
     function showCategoriasPublic($category){
         $this->smarty->assign('category', $category);
-        $this->smarty->display('templates\categoriasPublic.tpl');
+        $this->smarty->display('templates/invited/categoriasPublic.tpl');
+    }
+
+    function showCategoriasUser($category){
+        $this->smarty->assign('category', $category);
+        $this->smarty->display('templates/users/categoriasUsers.tpl');
     }
     
-    function showCategorias($category){
+    function showCategoriasAdmin($category){
         $this->smarty->assign('category', $category);
-        $this->smarty->display('templates\categorias.tpl');
+        $this->smarty->display('templates/admin/categoriasAdmin.tpl');
     }
 }

@@ -1,15 +1,19 @@
 <?php
 require_once'model/CategoryModel.php';
+require_once'model/UserModel.php';
 require_once'Helpers/AuthHelper.php';
 require_once'view/CategoryView.php';
 
 class CategoryController{
+
     private $modelCateg;
+    private $modelU;
     private $view;
     private $authHelper;
 
     function __construct(){
         $this->modelCateg = new CategoryModel();
+        $this->modelU = new UserModel();
         $this->view = new CategoriesView();
         $this->authHelper = new AuthHelper();
     }
@@ -21,8 +25,16 @@ class CategoryController{
 
     function detailCategorias(){
         if ($this->authHelper->isLogIn()) {
-            $DvCatego = $this->modelCateg->GetAllInCategorias();
-            $this->view->showCategorias($DvCatego);
+            $admin = $this->modelU->getUser($_SESSION["email"]);
+            
+            if ($admin->Admin == 1) {
+                $DvCatego = $this->modelCateg->GetAllInCategorias();
+                $this->view->showCategoriasAdmin($DvCatego);
+            }else{
+                $DvCatego = $this->modelCateg->GetAllInCategorias();
+                $this->view->showCategoriasUser($DvCatego);
+            }
+            
         }else{
             $DvCatego = $this->modelCateg->GetAllInCategorias();
             $this->view->showCategoriasPublic($DvCatego);

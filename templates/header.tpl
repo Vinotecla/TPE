@@ -20,7 +20,7 @@
                 </div>
             </div>
             </header>  
-            <nav>
+            {* <nav>
                 <article  id="menu">
                     <section><a href='home'>Admin</a></section>
                     <section><a href='login'>Login</a></section>
@@ -28,4 +28,4 @@
                     <section><a href='invitado'>Invitado</a></section>
                     <section><a href='categorias'>Categorias</a></section>
                 </article>
-            </nav>
+            </nav> *}

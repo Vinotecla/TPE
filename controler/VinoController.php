@@ -19,7 +19,6 @@ class VinoController{
         $this->modelUser = new UserModel();
         $this->view = new VinosView();
         $this->authHelper = new AuthHelper();
-        
     }
 
     function ShowHome(){
@@ -32,8 +31,8 @@ class VinoController{
         }else{
             $this->view->ShowBevidas($DbThings, $DvCatego);
         }
-       
     }
+
     function Invited(){
         $DbThings = $this->modelV->GetVinosYCategoriasTipo();
         $DvCatego = $this->modelCateg->GetCategoriaTipos();

@@ -1,4 +1,10 @@
 {include file="templates/header.tpl"}
+<nav>
+    <article  id="menu">
+        <section><a href='home'>Admin</a></section>
+        <section><a href='categorias'>Categorias</a></section>
+    </article>
+</nav>
 <div class="contenido">
     <div>
         <h2>Nuestros vinos</h2>
