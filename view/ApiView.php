@@ -10,6 +10,7 @@ class ApiView{
     private function _requestStatus($code){
         $status = array(
             200 => "OK",
+            204 => "No content",
             404 => "Not found",
             500 => "Internal Server Error",
             501 => "Internal Error in Tasks web"

@@ -42,15 +42,15 @@
                     <th><a href='item/{$b->id_vinos}'>{$b->nombre}</a></th>
                     <th>{$b->contenido}ML</th>
                     <th>${$b->precio}</th>
-                    {* <th><a type="button" href='delete/{$b->id_vinos}'>BORRAR</a></th>
+                    <th><a type="button" href='delete/{$b->id_vinos}'>BORRAR</a></th>
                     <th><a type="button" href='modificar/{$b->id_vinos}'>MODIFICAR</a>
-                    </th> *}
+                    </th>
                 <tr>
             {/foreach}
             </tbody >
         </table>
     </div>
-    {* <form action="add" method="post">
+    <form action="add" method="post">
         <div class="conteiner">
             <div>
             <select name='filtros'>
@@ -71,7 +71,7 @@
                 <button type="submit">AGREGAR</button>
             </div>
         </div>
-    </form> *}
+    </form>
     <form action="logout" method="post">
         <button type="submit">logout</button>
     </form>

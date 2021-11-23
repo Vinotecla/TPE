@@ -46,7 +46,6 @@ async function scoreFilter(e){
         let comentarios = await response.json();
         console.log(comentarios);
         renderUser(comentarios);
-
     }catch(e){
         console.log(e);
     }
@@ -79,7 +78,6 @@ async function getComments(id_vino){
         
         renderUser(comentarios);
         renderAdmin(comentarios);
-
     }catch(e){
         console.log(e);
     }
@@ -105,38 +103,6 @@ function renderUser(comentarios){
         }
     }
 }
-
-// function AddviewComment(){
-//     let btn_view_comemnt = document.querySelectorAll('.btn-comment');
-//     btn_view_comemnt.forEach(element =>{element.addEventListener('click', getComment)})
-// }
-
-// async function getComment(){
-//     console.log(this.value);
-//     try{
-//         let response = await fetch(`api/comentario/${this.value}`);
-//         let comentarios = await response.json();
-//         viewComment(comentarios);
-
-//     }catch(e){
-//         console.log(e);
-//     }
-// }
-
-// function viewComment(comentario){
-//     console.log(comentario);
-//     let comentView = document.querySelector('#contenedor-comentario');
-//     comentView.innerHTML = `<thead>
-//                                 <tr>
-//                                 <th>COMENTARIO</th>
-//                                 <th>PUNTAJE</th>
-//                                 </tr>
-//                             </thead>
-//                                 <tr>
-//                                 <th>${comentario[0].comentario}</th>                       
-//                                 <th>${comentario[0].puntaje}</th>
-//                             </tr>`
-// }
 
 function renderAdmin(comentarios){
     let listado = document.getElementById('comments-admin');
@@ -179,3 +145,36 @@ function deleteComment(){
 }
 
 getComments(id_vino);
+
+
+// function AddviewComment(){
+//     let btn_view_comemnt = document.querySelectorAll('.btn-comment');
+//     btn_view_comemnt.forEach(element =>{element.addEventListener('click', getComment)})
+// }
+
+// async function getComment(){
+//     console.log(this.value);
+//     try{
+//         let response = await fetch(`api/comentario/${this.value}`);
+//         let comentarios = await response.json();
+//         viewComment(comentarios);
+
+//     }catch(e){
+//         console.log(e);
+//     }
+// }
+
+// function viewComment(comentario){
+//     console.log(comentario);
+//     let comentView = document.querySelector('#contenedor-comentario');
+//     comentView.innerHTML = `<thead>
+//                                 <tr>
+//                                 <th>COMENTARIO</th>
+//                                 <th>PUNTAJE</th>
+//                                 </tr>
+//                             </thead>
+//                                 <tr>
+//                                 <th>${comentario[0].comentario}</th>                       
+//                                 <th>${comentario[0].puntaje}</th>
+//                             </tr>`
+// }

@@ -23,11 +23,35 @@
                 <tr>
                     <th>{$b->tipo}</th>
                     <th>{$b->descripcion}</th>
+                    <th><a href='deletecat/{$b->id_tipo}'>BORRAR</a></th>
                 </tr>
             {/foreach}
             </tbody >
         </table>
     </div>
+    <form action='addcat' method='post'>
+        <div>
+            <input type="text" placeholder="Ingrese Tipo" name="tipo">
+        </div>
+        <div>
+            <input type="text" placeholder="Ingrese Descripcion" name="descripcion">
+        </div>
+        <button type="submit">Agregar</button>
+    </form>
+
+    <form action='updatecat' method='post'>
+        <div class="conteiner">
+            <div>
+                <select name='tipo'>
+                {include file="templates/selectCategorias.tpl"}
+            </div>
+            <div>
+                <input type="text" placeholder="Ingrese Descripcion" name="descripcion">
+            </div>
+        </div>
+        <button type="submit">Modifiar</button>
+    </form>
+
     <form action="logout" method="post">
         <button type="submit">logout</button>
     </form>
