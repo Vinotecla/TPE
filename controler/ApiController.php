@@ -54,14 +54,14 @@ class ApiController{
         }
     }
 
-    function filterComments($params = null){
+    function filterComments($params = null) {
         $id_vino = $params[":ID"];
         if ($id_vino) {
             $score = $params[":IDP"];
             if($score == 'Todos'){
                 $comments = $this->model->getAll($id_vino);
                 return $this->view->response($comments, 200);
-            }else{
+            }else {
                 $comments = $this->model->getCommentsByScore($id_vino,$score);
                 return $this->view->response($comments,200);
             }
